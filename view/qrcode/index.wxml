@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="header"></view>
+  <image style="width: {{window_width}}px; height: {{window_width}}px;" src="{{qrcode}}" wx:if="{{is_load && qrcode != ''}}" />
+  <view class="no-data" wx:if="{{is_load && qrcode == ''}}">
+    <image src="/image/empty.svg" class="no-data-image-icon"></image>
+    <view class="no-data-text">当前没有数据</view>
+  </view>
+</view>

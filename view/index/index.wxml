@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="weui-panel weui-panel_access" hover-class="weui-cell_active" bindtap="handleUser">
+    <view class="weui-panel__bd">
+      <navigator url="/view/team/detail?member_id={{member.member_id}}" class="weui-media-box weui-media-box_appmsg" wx:for="{{member_list}}" wx:for-item="member" wx:key="{{member.member_id}}" id="{{member.member_id}}">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{member.user_avatar}}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            {{member.member_name}}
+          </view>
+          <view class="weui-media-box__desc">{{member.member_level_name}}</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <view wx:if="{{is_load && member.member_status}}">当月进货：￥{{member.member_month_order_amount}}</view>
+          <view wx:if="{{is_load && member.member_status}}">全部进货：￥{{member.member_all_order_amount}}</view>
+          <view wx:if="{{is_load && !member.member_status}}">待审核</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view style="float: left; width: 100%; margin-top: 8px;"></view>
+  <view class="no-data" wx:if="{{is_load && member_list.length == 0}}">
+    <image src="/image/empty.svg" class="no-data-image-icon"></image>
+    <view class="no-data-text">当前没有数据</view>
+  </view>
+</view>

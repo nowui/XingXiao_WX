@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{bill_list}}" wx:for-item="bill" wx:key="{{bill.bill_id}}" id="{{bill.bill_id}}">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg {{is_select ? 'delivery-list-box' : ''}}">
+        <view class="weui-media-box__title">
+          {{bill.bill_type == 'ORDER' ? '订单' : ''}}
+          {{bill.bill_type == 'SALE' ? '出货' : ''}}
+          {{bill.bill_type == 'COMMISSION' ? '佣金' : ''}}
+        </view>
+        <view class="weui-media-box__desc address">{{bill.bill_time}}</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{bill.bill_is_income ? '+' : '-'}} {{bill.bill_amount}}</view>
+    </view>
+  </view>
+  <view class="no-data" wx:if="{{is_load && bill_list.length == 0}}">
+    <image src="/image/empty.svg" class="no-data-image-icon"></image>
+    <view class="no-data-text">当前没有数据</view>
+  </view>
+</view>

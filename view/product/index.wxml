@@ -1,0 +1,39 @@
+<import src="/component/quantity/index.wxml" />
+<view class="container">
+  <view class="header"></view>
+  <view style="width: {{window_width}}px; height: {{window_width}}px;">
+    <image style="width: 100%; height: 100%;" src="{{product_image_file}}" wx:if="{{is_load}}" />
+  </view>
+  <view class="product-info">
+    <view class="product-info-name">{{product_name}}</view>
+    <view class="product-info-price">￥{{product_price}}</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title margin-top">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">已选：{{product_quantity.quantity}} 个</view>
+    </view>
+    <view class="weui-media-box weui-media-box_appmsg" style="height: 33px;">
+      <template is="zan-quantity" data="{{ ...product_quantity, componentId: 'product_quantity' }}" />
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title margin-top">
+    <block wx:for="{{product_content}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+      <block wx:if="{{item.type == 'img'}}">
+        <image data-index="{{index}}" style="width: 100%; height: {{item.attr.height ? item.attr.height : 0}}px" src="{{item.attr.src}}" bindload="handleImageLoad"></image>
+      </block>
+    </block>
+  </view>
+  <view style="height: 50px;"></view>
+  <view class="footer">
+    <view class="footer-total">
+      <view class="footer-total-checkbox" bindtap="handleAll">
+      </view>
+      <view class="footer-total-text">
+        总金额: ￥{{product_total}}
+      </view>
+    </view>
+    <view class="footer-pay" bindtap="handleBuy">
+      立即进货
+    </view>
+  </view>
+</view>

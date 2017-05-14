@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "view/home/index",
+    "view/index/index",
+    "view/knowledge/index",
+    "view/my/index",
+    "view/product/index",
+    "view/cart/index",
+    "view/cart/detail",
+    "view/team/detail",
+    "view/qrcode/index",
+    "view/order/index",
+    "view/order/detail",
+    "view/order/check",
+    "view/order/result",
+    "view/delivery/index",
+    "view/delivery/detail",
+    "view/bill/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "上海星销",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f4fa"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#c81623",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "view/index/index",
+        "iconPath": "/image/friend.png",
+        "selectedIconPath": "/image/friend_active.png",
+        "text": "团队"
+      },
+      {
+        "pagePath": "view/product/index",
+        "iconPath": "/image/cart.png",
+        "selectedIconPath": "/image/cart_active.png",
+        "text": "进货"
+      },
+      {
+        "pagePath": "view/knowledge/index",
+        "iconPath": "/image/read.png",
+        "selectedIconPath": "/image/read_active.png",
+        "text": "知识库"
+      },
+      {
+        "pagePath": "view/my/index",
+        "iconPath": "/image/my.png",
+        "selectedIconPath": "/image/my_active.png",
+        "text": "个人"
+      }
+    ]
+  }
+}

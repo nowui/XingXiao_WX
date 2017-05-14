@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+      <navigator url="/view/bill/index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{member.user_avatar}}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            <view>{{member.user_name}}</view>
+            <view style="font-size: 14px;">{{member_level_name}}</view>
+          </view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">账单</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title margin-top">
+    <navigator url="/view/order/index?order_flow=ALL" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="/image/form.svg" style="margin-right: 5px; margin-top: 5px; width: 20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">我的订单</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access order-info">查看全部订单</view>
+    </navigator>
+    <view class="weui-media-box weui-media-box_appmsg order" style="padding-left: 15px;">
+      <navigator url="/view/order/index?order_flow=WAIT_PAY" class="order-item">
+        <view class="order-item-icon">
+          <view style="position: relative; display:inline-block;">
+            <image class="order-item-icon-image" src="/image/pay.svg" />
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_PAY > 0}}">{{WAIT_PAY}}</view>
+          </view>
+        </view>
+        代付款
+      </navigator>
+      <navigator url="/view/order/index?order_flow=WAIT_SEND" class="order-item">
+        <view class="order-item-icon">
+          <view style="position: relative; display:inline-block;">
+            <image class="order-item-icon-image" src="/image/send.svg" />
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_SEND > 0}}">{{WAIT_SEND}}</view>
+          </view>
+        </view>
+        代发货
+      </navigator>
+      <navigator url="/view/order/index?order_flow=WAIT_RECEIVE" class="order-item">
+        <view class="order-item-icon">
+          <view style="position: relative; display:inline-block;">
+            <image class="order-item-icon-image" src="/image/deliver.svg" />
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_RECEIVE > 0}}">{{WAIT_RECEIVE}}</view>
+          </view>
+        </view>
+        代收货
+      </navigator>
+      <navigator url="/view/order/index?order_flow=FINISH" class="order-item">
+        <view class="order-item-icon">
+          <image class="order-item-icon-image" src="/image/comment.svg" />
+        </view>
+        已完成
+      </navigator>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title margin-top">
+    <navigator url="/view/qrcode/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="/image/qr_code.svg" style="margin-right: 5px; margin-top: 6px; width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">我的二维码</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/view/delivery/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="/image/location.svg" style="margin-right: 5px; margin-top: 6px; width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">我的地址</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+</view>
