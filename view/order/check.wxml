@@ -16,7 +16,7 @@
       </view>
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view class="weui-media-box__title">{{product.product_name}}</view>
-        <view class="weui-media-box__desc">×  {{product.product_quantity.quantity}}</view>
+        <view class="weui-media-box__desc">{{product.product_price}} × {{product.product_quantity.quantity}}</view>
       </view>
       <view class="weui-cell__ft">￥{{product.product_total_price}}</view>
     </view>

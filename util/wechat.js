@@ -8,7 +8,6 @@ function auth(config) {
     if (storage.getIsLanuch()) {
       wx.openSetting({
         success: (res) => {
-          console.log(res.authSetting['scope.userInfo']);
           if (res.authSetting['scope.userInfo']) {
             login(config);
           }
@@ -39,7 +38,6 @@ function login(config) {
                 iv: res.iv
               },
               success: function (data) {
-                console.log(data);
                 storage.setToken(data.token);
                 storage.setOpenId(data.open_id);
                 storage.setMember({

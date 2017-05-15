@@ -23,8 +23,8 @@
 }
 
 .footer-total-text {
-  text-align: right;
-  margin-right: 10px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .footer-pay {

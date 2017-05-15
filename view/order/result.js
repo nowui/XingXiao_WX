@@ -1,7 +1,10 @@
+const notification = require('../../util/notification.js');
+const constant = require("../../util/constant.js");
 const http = require("../../util/http.js");
 
 Page({
   data: {
+    type: 'normal',
     count: 0,
     order_id: '',
     result: 'confirm',
@@ -15,6 +18,7 @@ Page({
   },
   onLoad: function (option) {
     this.setData({
+      type: option.type,
       order_id: option.order_id
     });
 
@@ -51,6 +55,8 @@ Page({
       },
       success: function (data) {
         if (data.order_is_pay) {
+          notification.emit(constant.notification_order_result_pay, data);
+
           this.setData({
             result: 'success',
             order: data
@@ -79,8 +85,12 @@ Page({
     })
   },
   handleOrder: function () {
-    wx.redirectTo({
-      url: '/view/order/index?order_flow=ALL'
-    });
+    if (this.data.type == 'BACK') {
+      wx.navigateBack();
+    } else {
+      wx.redirectTo({
+        url: '/view/order/index?order_flow=ALL'
+      });
+    }
   }
 });

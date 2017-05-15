@@ -15,13 +15,42 @@ Page({
     }
   },
   onUnload: function () {
-
+    notification.remove(constant.notification_order_result_pay, this);
   },
   onLoad: function (option) {
+    notification.on(constant.notification_order_result_pay, this, function (data) {
+      this.handleLoad();
+    });
+
+    this.setData({
+      order_id: option.order_id
+    });
+
+    this.handleLoad();
+  },
+  onReady: function () {
+
+  },
+  onShow: function () {
+
+  },
+  onHide: function () {
+
+  },
+  onPullDownRefresh: function () {
+
+  },
+  onReachBottom: function () {
+
+  },
+  onShareAppMessage: function () {
+
+  },
+  handleLoad: function () {
     http.request({
       url: '/order/find',
       data: {
-        order_id: option.order_id
+        order_id: this.data.order_id
       },
       success: function (data) {
         var order_status_list = constant.order_status_list;
@@ -42,24 +71,6 @@ Page({
         });
       }.bind(this)
     });
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
-
   },
   handlePay: function () {
     if (this.data.order.order_id == '') {
@@ -86,8 +97,8 @@ Page({
               paySign: data.paySign,
               appId: constant.app_id,
               success: function (response) {
-                wx.redirectTo({
-                  url: '/view/order/result?order_id=' + order_id
+                wx.navigateTo({
+                  url: '/view/order/result?order_id=' + order_id + '&type=BACK'
                 });
               },
               fail: function (response) {

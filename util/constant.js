@@ -55,7 +55,9 @@ const constant = {
     order_status_value: 'FINISH',
     order_status_name: '已完成',
     order_status_image: '/image/comment.svg'
-  }]
+  }],
+  notification_delivery_index_load: 'notification_delivery_index_load',
+  notification_order_result_pay: 'notification_order_result_pay'
 }
 
 module.exports = constant;

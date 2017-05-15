@@ -93,7 +93,6 @@ Page(Object.assign({}, Quantity, {
         product_total = product_price[0].product_price * product_quantity_min;
 
         this.setData({
-          is_load: true,
           product_quantity: {
             quantity: data.product_quantity_min,
             min: data.product_quantity_min
@@ -105,9 +104,15 @@ Page(Object.assign({}, Quantity, {
           product_name: data.product_name,
           product_price: JSON.parse(data.sku_list[0].product_price)[0].product_price.toFixed(2),
           product_image_file: data.product_image_file,
-          product_image_file_list: data.product_image_file_list,
-          product_content: htmlToWxml.html2json(data.product_content)
+          product_image_file_list: data.product_image_file_list
         });
+
+        if (!this.data.is_load) {
+          this.setData({
+            is_load: true,
+            product_content: htmlToWxml.html2json(data.product_content)
+          });
+        }
       }.bind(this)
     });
 
@@ -122,50 +127,58 @@ Page(Object.assign({}, Quantity, {
       return;
     }
 
-    var product_list = [{
+    storage.setProduct([{
       sku_id: this.data.sku_id,
       product_id: this.data.product_id,
       product_name: this.data.product_name,
-      product_image_file: constant.host + this.data.product_image_file,
+      product_image_file: this.data.product_image_file,
       product_price: this.data.product_price,
-      product_quantity: this.data.product_quantity.quantity,
-      product_stock: this.data.product_quantity.max
-    }]
-
-    http.request({
-      url: '/order/save',
-      data: {
-        order_delivery_name: '',
-        order_delivery_phone: '',
-        order_delivery_address: '',
-        order_message: '',
-        order_pay_type: 'WECHAT_PAY',
-        product_list: product_list,
-        open_id: storage.getOpenId(),
-        pay_type: 'WX'
+      product_quantity: {
+        quantity: this.data.product_quantity.quantity,
+        min: 1,
+        max: 99999
       },
-      success: function (data) {
-        var order_id = data.orderId;
+      product_stock: this.data.product_quantity.max
+    }]);
 
-        wx.requestPayment({
-          timeStamp: data.timeStamp,
-          nonceStr: data.nonceStr,
-          package: data.package,
-          signType: data.signType,
-          paySign: data.paySign,
-          appId: constant.app_id,
-          success: function (response) {
-            wx.redirectTo({
-              url: '/view/order/result?order_id=' + order_id
-            });
-          },
-          fail: function (response) {
-            wx.redirectTo({
-              url: '/view/order/index?order_flow=ALL'
-            });
-          }
-        })
-      }.bind(this)
+    wx.navigateTo({
+      url: '/view/order/check'
     });
+
+    // http.request({
+    //   url: '/order/save',
+    //   data: {
+    //     order_delivery_name: '',
+    //     order_delivery_phone: '',
+    //     order_delivery_address: '',
+    //     order_message: '',
+    //     order_pay_type: 'WECHAT_PAY',
+    //     product_list: product_list,
+    //     open_id: storage.getOpenId(),
+    //     pay_type: 'WX'
+    //   },
+    //   success: function (data) {
+    //     var order_id = data.orderId;
+
+    //     wx.requestPayment({
+    //       timeStamp: data.timeStamp,
+    //       nonceStr: data.nonceStr,
+    //       package: data.package,
+    //       signType: data.signType,
+    //       paySign: data.paySign,
+    //       appId: constant.app_id,
+    //       success: function (response) {
+    //         wx.redirectTo({
+    //           url: '/view/order/result?order_id=' + order_id
+    //         });
+    //       },
+    //       fail: function (response) {
+    //         wx.redirectTo({
+    //           url: '/view/order/index?order_flow=ALL'
+    //         });
+    //       }
+    //     })
+    //   }.bind(this)
+    // });
   }
 }));

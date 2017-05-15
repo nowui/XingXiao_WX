@@ -23,8 +23,8 @@
 }
 
 .footer-total-text {
-  text-align: right;
-  margin-right: 10px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .footer-pay {
@@ -36,8 +36,4 @@
   color: #fff;
   text-align: center;
   background-color: #1AAD19;
-}
-
-.weui-media-box {
-  padding: 0px 15px 0px 15px;
 }

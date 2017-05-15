@@ -8,6 +8,12 @@ Page({
 
   },
   onLoad: function () {
+    
+  },
+  onReady: function () {
+
+  },
+  onShow: function () {
     wechat.auth({
       is_open_setting: false,
       success: function (data) {
@@ -19,12 +25,6 @@ Page({
         
       }
     }); 
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
   },
   onHide: function () {
 

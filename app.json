@@ -2,9 +2,9 @@
   "pages": [
     "view/home/index",
     "view/index/index",
+    "view/product/index",
     "view/knowledge/index",
     "view/my/index",
-    "view/product/index",
     "view/cart/index",
     "view/cart/detail",
     "view/team/detail",
