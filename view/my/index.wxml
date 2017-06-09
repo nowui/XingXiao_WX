@@ -4,11 +4,11 @@
     <view class="weui-panel__bd">
       <navigator url="/view/bill/index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" src="{{member.user_avatar}}" />
+          <image class="weui-media-box__thumb" src="{{user_avatar}}" />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">
-            <view>{{member.user_name}}</view>
+            <view>{{user_name}}</view>
             <view style="font-size: 14px;">{{member_level_name}}</view>
           </view>
         </view>

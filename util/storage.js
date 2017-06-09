@@ -29,6 +29,7 @@ function setOpenId(opoen_id) {
 }
 
 function getToken() {
+  // return 'eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE0OTU0Mjg4ODEsImV4cCI6MTUyNjk2NDg4MSwiYXV0aG9yaXphdGlvbl9pZCI6IjFhZTczMWFjZDE3MzRkMTFhZTI1M2VjNzJhYWVhY2YwIiwidXNlcl9pZCI6IjQwZDRmYTZlNGE3MzRkMzM4NjIzMzY2ZTQzNDViNzg0In0.KfE3zG-W4DCRSanwlMoMvF_d6jUcpCSIDbedPCa_QBVy3JY026GUFYMFtk_9GHlGqZA9-8k2kfR6RojfK_NTrQ';
   return wx.getStorageSync(token_key);
 }
 

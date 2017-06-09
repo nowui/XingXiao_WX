@@ -31,7 +31,7 @@ Page({
   },
   handleLoad: function () {
     http.request({
-      url: '/order/team/list',
+      url: '/member/team/list',
       data: {
 
       },

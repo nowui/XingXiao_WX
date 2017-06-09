@@ -22,8 +22,8 @@ Page({
   },
   onLoad: function (option) {
     this.setData({
-      // member_id: option.member_id
-      member_id: 'e63b4b8616cc4c3ab1207806d24fb825'
+      member_id: option.member_id
+      // member_id: 'e63b4b8616cc4c3ab1207806d24fb825'
     });
 
     this.handleLoad();
