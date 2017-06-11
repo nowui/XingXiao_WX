@@ -13,8 +13,8 @@
           <view class="weui-media-box__desc">{{member.member_level_name}}</view>
         </view>
         <view class="weui-cell__ft weui-cell__ft_in-access">
-          <view wx:if="{{is_load && member.member_status}}">当月进货：￥{{member.member_month_order_amount}}</view>
-          <view wx:if="{{is_load && member.member_status}}">全部进货：￥{{member.member_all_order_amount}}</view>
+          <view wx:if="{{is_load && member.member_status}}">收入：￥{{member.member_commission_amount}}</view>
+          <view wx:if="{{is_load && member.member_status}}">进货：￥{{member.member_order_amount}}</view>
           <view wx:if="{{is_load && !member.member_status}}">待审核</view>
         </view>
       </navigator>

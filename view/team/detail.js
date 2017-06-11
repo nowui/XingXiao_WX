@@ -11,8 +11,8 @@ Page({
     member_name: '',
     user_avatar: '',
     member_level_id: '',
-    member_month_order_amount: 0,
-    member_all_order_amount: 0,
+    member_commission_amount: 0,
+    member_order_amount: 0,
     member_status: false,
     order_list: [],
     member_level_list: []
@@ -48,7 +48,7 @@ Page({
   },
   handleLoad: function () {
     http.request({
-      url: '/order/team/find',
+      url: '/member/team/find',
       data: {
         member_id: this.data.member_id,
       },

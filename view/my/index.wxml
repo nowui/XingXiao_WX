@@ -12,7 +12,10 @@
             <view style="font-size: 14px;">{{member_level_name}}</view>
           </view>
         </view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">账户：￥{{member_total_amount}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <view>收入：￥{{member_commission_amount}}</view>
+          <view>进货：￥{{member_order_amount}}</view>
+        </view>
       </navigator>
     </view>
   </view>
@@ -29,7 +32,7 @@
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/pay.svg" />
-            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_PAY > 0}}">{{WAIT_PAY}}</view>
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{member_wait_pay > 0}}">{{member_wait_pay}}</view>
           </view>
         </view>
         代付款
@@ -38,7 +41,7 @@
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/send.svg" />
-            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_SEND > 0}}">{{WAIT_SEND}}</view>
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{member_wait_send > 0}}">{{member_wait_send}}</view>
           </view>
         </view>
         代发货
@@ -47,7 +50,7 @@
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/deliver.svg" />
-            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_RECEIVE > 0}}">{{WAIT_RECEIVE}}</view>
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{member_wait_receive > 0}}">{{member_wait_receive}}</view>
           </view>
         </view>
         代收货
