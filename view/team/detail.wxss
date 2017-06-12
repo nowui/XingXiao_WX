@@ -10,3 +10,7 @@
 .weui-cell_link {
   color: #000;
 }
+
+.footer-submit {
+  font-size: 16px;
+}
