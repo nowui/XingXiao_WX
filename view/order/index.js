@@ -15,14 +15,28 @@ Page({
     order_list: []
   },
   onUnload: function () {
-    notification.remove(constant.notification_order_result_pay, this);
+    notification.remove("notification_order_result_pay", this);
   },
   onLoad: function (option) {
-    notification.on(constant.notification_order_result_pay, this, function (data) {
+    notification.on("notification_order_result_pay", this, function (data) {
       this.handleLoad();
     });
 
+    var index = 0;
+    for (var i = 0; i < this.data.order_status_list.length; i++) {
+      if (option.order_flow == this.data.order_status_list[i].order_status_value) {
+        index = i;
+
+        break;
+      }
+    }
+
+    var slider_width = this.data.window_width / this.data.order_status_list.length;
+
     this.setData({
+      slider_left: 0,
+      slider_offset: slider_width * index,
+      slider_width: slider_width,
       order_flow: option.order_flow
     });
 
@@ -59,27 +73,18 @@ Page({
         for (var i = 0; i < data.length; i++) {
           for (var j = 0; j < data[i].product_list.length; j++) {
             data[i].product_list[j].product_image_file = constant.host + data[i].product_list[j].product_image_file;
+            
+            data[i].product_list[j].order_product_price = data[i].product_list[j].order_product_price.toFixed(2);
           }
+
+          data[i].order_amount = data[i].order_amount.toFixed(2);
+
           if (data[i].order_flow == this.data.order_flow || this.data.order_flow == 'ALL') {
             order_list.push(data[i]);
           }
         }
 
-        var index = 0;
-        for (var i = 0; i < this.data.order_status_list.length; i++) {
-          if (this.dataorder_flow == this.data.order_status_list[i].order_status_value) {
-            index = i;
-
-            break;
-          }
-        }
-
-        var slider_width = this.data.window_width / this.data.order_status_list.length;
-
         this.setData({
-          slider_left: 0,
-          slider_offset: slider_width * index,
-          slider_width: slider_width,
           is_load: true,
           list: data,
           order_list: order_list

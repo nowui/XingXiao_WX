@@ -79,6 +79,7 @@ Page(Object.assign({}, Quantity, {
   },
   handleLoad: function () {
     http.request({
+      is_toast: !this.data.is_load,
       url: '/xingxiao/product/find',
       data: {
         product_id: this.data.product_id
@@ -92,7 +93,14 @@ Page(Object.assign({}, Quantity, {
 
         product_total = product_price[0].product_price * product_quantity_min;
 
+        if (!this.data.is_load) {
+          this.setData({
+            product_content: htmlToWxml.html2json(data.product_content)
+          });
+        }
+        
         this.setData({
+          is_load: true,
           product_quantity: {
             quantity: data.product_quantity_min,
             min: data.product_quantity_min
@@ -107,19 +115,8 @@ Page(Object.assign({}, Quantity, {
           product_image_file_list: data.product_image_file_list
         });
 
-        if (!this.data.is_load) {
-          this.setData({
-            is_load: true,
-            product_content: htmlToWxml.html2json(data.product_content)
-          });
-        }
+        
       }.bind(this)
-    });
-
-    this.setData({
-      slider_left: 0,
-      slider_offset: this.data.window_width / 2 * this.data.tab_index,
-      slider_width: this.data.window_width / 2
     });
   },
   handleBuy: function () {
@@ -144,41 +141,5 @@ Page(Object.assign({}, Quantity, {
     wx.navigateTo({
       url: '/view/order/check'
     });
-
-    // http.request({
-    //   url: '/order/save',
-    //   data: {
-    //     order_delivery_name: '',
-    //     order_delivery_phone: '',
-    //     order_delivery_address: '',
-    //     order_message: '',
-    //     order_pay_type: 'WECHAT_PAY',
-    //     product_list: product_list,
-    //     open_id: storage.getOpenId(),
-    //     pay_type: 'WX'
-    //   },
-    //   success: function (data) {
-    //     var order_id = data.orderId;
-
-    //     wx.requestPayment({
-    //       timeStamp: data.timeStamp,
-    //       nonceStr: data.nonceStr,
-    //       package: data.package,
-    //       signType: data.signType,
-    //       paySign: data.paySign,
-    //       appId: constant.app_id,
-    //       success: function (response) {
-    //         wx.redirectTo({
-    //           url: '/view/order/result?order_id=' + order_id
-    //         });
-    //       },
-    //       fail: function (response) {
-    //         wx.redirectTo({
-    //           url: '/view/order/index?order_flow=ALL'
-    //         });
-    //       }
-    //     })
-    //   }.bind(this)
-    // });
   }
 }));

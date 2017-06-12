@@ -15,10 +15,10 @@ Page({
     }
   },
   onUnload: function () {
-    notification.remove(constant.notification_order_result_pay, this);
+    notification.remove("notification_order_result_pay", this);
   },
   onLoad: function (option) {
-    notification.on(constant.notification_order_result_pay, this, function (data) {
+    notification.on("notification_order_result_pay", this, function (data) {
       this.handleLoad();
     });
 
@@ -64,7 +64,11 @@ Page({
 
         for (var i = 0; i < data.product_list.length; i++) {
           data.product_list[i].product_image_file = constant.host + data.product_list[i].product_image_file;
+
+          data.product_list[i].order_product_price = data.product_list[i].order_product_price.toFixed(2);
         }
+
+        data.order_amount = data.order_amount.toFixed(2);
 
         this.setData({
           order: data

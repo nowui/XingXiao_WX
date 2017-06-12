@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="weui-tab">
+    <view class="weui-navbar" style="background-color: #ffffff;" wx:if="{{list.length > 1}}">
+      <block wx:for="{{list}}" wx:for-item="express" wx:key="{{express.express_id}}">
+        <view id="{{express.express_id}}" class="weui-navbar__item {{express_id == express.express_id ? 'weui-bar__item_on' : ''}}" bindtap="handleTab">
+          <view class="weui-navbar__title">包裹{{index + 1}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="width: {{slider_width}}px; left: {{slider_left}}px; transform: translateX({{slider_offset}}px); -webkit-transform: translateX({{slider_offset}}px);"></view>
+    </view>
+    <view class="{{list.length > 1 ? 'weui-tab__panel' : ''}}" style="overflow: visible; background-color: #f5f4fa;">
+
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-media-box weui-media-box_appmsg" wx:for="{{express.express_trace}}" wx:for-item="trace" wx:key="{{trace.AcceptTime}}">
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="title">{{trace.AcceptStation}}</view>
+            <view class="weui-media-box__desc address">{{trace.AcceptTime}}</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

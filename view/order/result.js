@@ -55,7 +55,7 @@ Page({
       },
       success: function (data) {
         if (data.order_is_pay) {
-          notification.emit(constant.notification_order_result_pay, data);
+          notification.emit("notification_order_result_pay", data);
 
           this.setData({
             result: 'success',

@@ -1,0 +1,12 @@
+.page-section-title {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.weui-cell_link {
+  color: #000;
+}

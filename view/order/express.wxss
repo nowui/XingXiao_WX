@@ -1,0 +1,9 @@
+.title {
+  font-size:14px;
+  width:auto;
+}
+
+.weui-panel:first-child {
+  margin-top: 10px;
+}
+

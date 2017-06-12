@@ -33,7 +33,7 @@
     </view>
         <view class="weui-panel__ft">
           <view class="weui-cell weui-cell_link">
-            <view class="weui-cell__bd">共{{order.product_list.length}}件商品，合计：￥{{order.order_amount}}</view>
+            <view class="weui-cell__bd" style="text-align:right;">共{{order.product_list.length}}件商品，合计：￥{{order.order_amount}}</view>
           </view>
         </view>
       </navigator>

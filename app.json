@@ -3,16 +3,18 @@
     "view/home/index",
     "view/index/index",
     "view/product/index",
-    "view/knowledge/index",
+    "view/article/index",
     "view/my/index",
     "view/cart/index",
     "view/cart/detail",
     "view/team/detail",
+    "view/team/level",
     "view/qrcode/index",
     "view/order/index",
     "view/order/detail",
     "view/order/check",
     "view/order/result",
+    "view/order/express",
     "view/delivery/index",
     "view/delivery/detail",
     "view/bill/index"
@@ -43,7 +45,7 @@
         "text": "进货"
       },
       {
-        "pagePath": "view/knowledge/index",
+        "pagePath": "view/article/index",
         "iconPath": "/image/read.png",
         "selectedIconPath": "/image/read_active.png",
         "text": "知识库"
@@ -52,7 +54,7 @@
         "pagePath": "view/my/index",
         "iconPath": "/image/my.png",
         "selectedIconPath": "/image/my_active.png",
-        "text": "个人"
+        "text": "我的"
       }
     ]
   }

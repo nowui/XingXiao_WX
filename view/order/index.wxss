@@ -1,7 +1,3 @@
-.container {
-  
-}
-
 .weui-panel:first-child {
   margin-top: 10px;
 }

@@ -21,8 +21,8 @@ function request(config) {
   }
 
   wx.request({
-    // url: 'https://api.nowui.com' + config.url,
-    url: 'http://192.168.1.28:8080' + config.url,
+    url: 'https://api.nowui.com' + config.url,
+    // url: 'http://192.168.1.28:8080' + config.url,
     method: config.method,
     header: {
       'Accept': 'application/json',

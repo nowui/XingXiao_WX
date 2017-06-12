@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="page-section-title" wx:if="{{is_load}}">选择会员等级</view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{is_load}}">
+    <radio-group bindchange="handleRadioChange">
+      <label class="weui-cell weui-check__label" wx:for="{{member_level_list}}"wx:for-item="member_level"  wx:key="{{member_level.member_level_id}}">
+
+        <view class="weui-cell__hd">
+          <radio value="{{member_level.member_level_id}}" checked="{{member_level.member_level_id == member_level_id}}" color="{{color}}"/>
+        </view>
+        <view class="weui-cell__bd">{{member_level.member_level_name}}</view>
+      </label>
+    </radio-group>
+  </view>
+  <view style="height: 50px;"></view>
+  <view class="footer">
+    <view class="footer-submit" bindtap="handleSubmit">
+      保存
+    </view>
+  </view>
+</view>
