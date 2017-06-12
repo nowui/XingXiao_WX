@@ -6,7 +6,7 @@ const constant = {
   // api: 'http://localhost:8080',
   api: 'https://api.nowui.com',
   platform: 'WX',
-  version: '1.0.0',
+  version: '1.0.1',
   color: '#c81623',
   duration: 2000,
   category_list: [{
